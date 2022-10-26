@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Crear Proveedor')
+@section('title', 'Crear Repuesto')
 
 @section('content_header')
-    <h1>Crear Proveedor</h1>
+    <h1>Crear Repuesto</h1>
 @stop
 
 @section('content')
@@ -30,48 +30,39 @@
             @else
                 <p>&nbsp;</p>
             @endif
-            <form action="{{route('proveedor.almacenar')}}" method="POST" novalidate>
+            <form action="{{route('repuesto.almacenar')}}" method="POST" novalidate>
                 @csrf
 
                 <div class="form-group">
-                    <label for="id_proveedor">ID de Proveedor</label>
-                    <input class="form-control String" type="text" name="id_proveedor" id="id_proveedor"
-                           value="{{old('id_proveedor')}}" maxlength="75"
+                    <label for="item">Item</label>
+                    <input class="form-control String" type="text" name="item" id="item"
+                           value="{{old('item')}}" maxlength="15"
                            required="required">
-                    @if($errors->has('nombre'))
-                        <p class="text-danger">{{$errors->first('id_proveedor')}}</p>
+                    @if($errors->has('item'))
+                        <p class="text-danger">{{$errors->first('item')}}</p>
                     @endif
                 </div>
 
                 <div class="form-group">
-                    <label for="nit">NIT</label>
-                    <input class="form-control String" type="text" name="nit" id="nit"
-                           value="{{old('nit')}}" required="required"
+                    <label for="nombre">Nombre de Repuesto</label>
+                    <input class="form-control String" type="text" name="nombre" id="nombre"
+                           value="{{old('nombre')}}" required="required"
                     >
-                    @if($errors->has('nit'))
-                        <p class="text-danger">{{$errors->first('nit')}}</p>
+                    @if($errors->has('nombre'))
+                        <p class="text-danger">{{$errors->first('nombre')}}</p>
                     @endif
                 </div>
 
                 <div class="form-group">
-                    <label for="nombre_proveedor">Nombre de Proveedor</label>
-                    <input class="form-control String" type="text" name="nombre_proveedor" id="nombre_proveedor"
-                           value="{{old('nombre_proveedor')}}" maxlength="75"
+                    <label for="ubicacion_bodega">Ubicacion en Bodega</label>
+                    <input class="form-control String" type="text" name="ubicacion_bodega" id="ubicacion_bodega"
+                           value="{{old('ubicacion_bodega')}}" maxlength="10"
                            required="required">
-                    @if($errors->has('nombre'))
-                        <p class="text-danger">{{$errors->first('nombre_proveedor')}}</p>
+                    @if($errors->has('ubicacion_bodega'))
+                        <p class="text-danger">{{$errors->first('ubicacion_bodega')}}</p>
                     @endif
                 </div>
 
-                <div class="form-group">
-                    <label for="observacion">Observacion</label>
-                    <input class="form-control String" type="text" name="observacion" id="observacion"
-                           value="{{old('observacion')}}"
-                    >
-                    @if($errors->has('observacion'))
-                        <p class="text-danger">{{$errors->first('observacion')}}</p>
-                    @endif
-                </div>
                 <div class="btn-group">
                     <button class="btn btn-outline-info" type="submit">Crear</button>
                     <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Regresar</a>

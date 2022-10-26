@@ -374,6 +374,11 @@ return [
             'url'=>'/consumo'
         ],
         [
+            'text'=>'Ingreso',
+            'icon'=>'fas fa-fw fa-store',
+            'url'=>'/ingreso'
+        ],
+        [
             'text'    => 'INFORMACION',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -387,7 +392,7 @@ return [
                 ],
                 [
                     'text' => 'REPUESTOS',
-                    'url' => '/datos/repuestos'
+                    'url' => '/datos/repuesto'
                 ]
             ],
         ],

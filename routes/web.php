@@ -3,6 +3,7 @@
 use App\Http\Controllers\ConsumoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\RepuestoController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,16 @@ Route::post('/consumo/store', [ConsumoController::class, 'save'])->name('consumo
 Route::get('/consumo/edit/{consumo}', [ConsumoController::class, 'edit'])->name('consumo.editar');
 Route::post('/consumo/update/{consumo}', [ConsumoController::class, 'update'])->name('consumo.actualizar');
 Route::post('/consumo/delete/', [ConsumoController::class, 'delete'])->name('consumo.eliminar');
+
+// Ingreso
+Route::get('/ingreso', [IngresoController::class, 'index'])->name('ingreso');
+Route::get('/ingreso/create', [IngresoController::class, 'create'])->name('ingreso.crear');
+Route::post('/ingreso/store', [IngresoController::class, 'save'])->name('ingreso.almacenar');
+
+Route::get('/ingreso/edit/{ingreso}', [IngresoController::class, 'edit'])->name('ingreso.editar');
+Route::post('/ingreso/update/{ingreso}', [IngresoController::class, 'update'])->name('ingreso.actualizar');
+Route::post('/ingreso/delete/', [IngresoController::class, 'delete'])->name('ingreso.eliminar');
+
 
 // Proveedor
 Route::get('/datos/proveedor', [ProveedorController::class, 'index'])->name('proveedor');
