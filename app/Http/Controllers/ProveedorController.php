@@ -56,6 +56,12 @@ class ProveedorController extends Controller
     }
 
     public function update(Request $request,$id){
+        $proveedor = Proveedor::find($id);
+
+        $proveedor->nit = $request->nit;
+        $proveedor->nombre_proveedor = $request->nombre_proveedor;
+        $proveedor->observacion = $request->observacion;
+        $proveedor->save();
         return redirect()->route('proveedor')->with('status','Proveedor actualizado.');
     }
 
