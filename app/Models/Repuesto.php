@@ -9,6 +9,7 @@ class Repuesto extends Model
 {
     protected $table= 'repuesto';
     public $timestamps = false;
+    public $incrementing = false;
 
 
     protected $fillable = [

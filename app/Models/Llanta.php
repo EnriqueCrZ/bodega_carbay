@@ -9,7 +9,7 @@ class Llanta extends Model
 {
     protected $table= 'llanta';
     public $timestamps = false;
-
+    public $incrementing = false;
 
     protected $fillable = [
         'no_ot_vale','kilometraje','cantidad','descripcion_quemado','costo_unitario','costo_total','fecha_instalacion',

@@ -9,6 +9,7 @@ class Consumo extends Model
 {
     protected $table= 'consumo';
     public $timestamps = false;
+    public $incrementing = false;
 
 
     protected $fillable = [

@@ -9,6 +9,7 @@ class Coordinador extends Model
 {
     protected $table= 'coordinador';
     public $timestamps = false;
+    public $incrementing = false;
 
 
     protected $fillable = [

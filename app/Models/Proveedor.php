@@ -9,6 +9,7 @@ class Proveedor extends Model
 {
     protected $table= 'proveedor';
     public $timestamps = false;
+    public $incrementing = false;
 
 
     protected $fillable = [

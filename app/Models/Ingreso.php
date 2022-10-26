@@ -9,6 +9,7 @@ class Ingreso extends Model
 {
     protected $table= 'ingreso';
     public $timestamps = false;
+    public $incrementing = false;
 
 
     protected $fillable = [

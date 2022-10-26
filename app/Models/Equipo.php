@@ -9,6 +9,7 @@ class Equipo extends Model
 {
     protected $table= 'equipo';
     public $timestamps = false;
+    public $incrementing = false;
 
 
     protected $fillable = [
