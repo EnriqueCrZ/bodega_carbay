@@ -67,23 +67,27 @@ class IngresoController extends Controller
     }
 
     public function edit($id){
-        $id = decrypt($id);
-        $repuesto = Ingreso::find($id);
+        $ingreso = Ingreso::find($id);
+        $repuestos = Repuesto::all();
+        $proveedores = Proveedor::all();
 
 
-        return view('ingreso.edit',compact('repuesto'));
+        return view('ingreso.edit',compact('ingreso','repuestos','proveedores'));
     }
 
     public function update(Request $request,$id){
-        $id = decrypt($id);
-        $repuesto = Ingreso::find($id);
+        $ingreso = Ingreso::find($id);
 
-        $repuesto->item = $id;
-        $repuesto->nombre = strtoupper($request->nombre);
-        $repuesto->ubicacion_bodega = strtoupper($request->ubicacion_bodega ?? 'no');
-        $repuesto->save();
+        $ingreso->fecha_vale = date('Y-m-d',strtotime($request->fecha_vale));
+        $ingreso->vale = strtoupper($request->vale);
+        $ingreso->costo_unitario = $request->costo_unitario;
+        $ingreso->costo_total = $request->costo_total;
+        $ingreso->cantidad = $request->cantidad;
+        $ingreso->repuesto_item = $request->repuesto;
+        $ingreso->proveedor_id_proveedor = $request->proveedor;
+        $ingreso->save();
 
-        return redirect()->route('repuesto')->with('status','Repuesto actualizado.');
+        return redirect()->route('ingreso')->with('status','Ingreso actualizado.');
     }
 
     public function destroy(Request $request){

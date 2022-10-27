@@ -97,6 +97,7 @@
         <script>
             $(document).ready(function(){
                 $(".tabla_informacion").DataTable({
+                    ordering: false,
                     language: {
                         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json'
                     }
