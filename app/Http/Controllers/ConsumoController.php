@@ -13,7 +13,7 @@ class ConsumoController extends Controller
     }
 
     public function index(){
-        $consumos = Consumo::paginate(20);
+        $consumos = Consumo::all();
 
 
     }

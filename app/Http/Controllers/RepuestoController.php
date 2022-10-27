@@ -14,7 +14,7 @@ class RepuestoController extends Controller
     }
 
     public function index(){
-        $repuestos = Repuesto::paginate(50);
+        $repuestos = Repuesto::all();
 
 
         return view('repuesto.repuesto',compact('repuestos'));

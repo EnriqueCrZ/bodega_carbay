@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <div>
+    <div class="mb-3">
         <a href="{{route('equipo.crear')}}">
             <div class="btn-group">
                 <button type="button" class="btn btn-outline-info">Crear Equipo</button>
@@ -21,7 +21,7 @@
         </a>
     </div>
        <div class="table-responsive">
-           <table class="table text-center table-responsive-md">
+           <table class="table text-center table-responsive-md tabla_informacion">
                @if(count($equipos))
                    <thead>
                    <tr>
@@ -60,9 +60,6 @@
                @endforelse
                </tbody>
            </table>
-       </div>
-       <div class="">
-           {{ $equipos->links('vendor.pagination.simple-bootstrap-4') }}
        </div>
 
 @stop

@@ -86,9 +86,59 @@
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+        <script src="{{ asset('vendor/moment/moment.min.js') }}"></script>
+
+
+
 
         {{-- Configured Scripts --}}
         @include('adminlte::plugins', ['type' => 'js'])
+
+        <script>
+            $(document).ready(function(){
+                $(".tabla_informacion").DataTable({
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json'
+                    }
+                });
+            })
+
+            let periodo = {{ date('Y') }};
+            $(".fecha").daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: periodo,
+                maxYear: {{ date('Y',strtotime(date('Y').' + 1 years')) }},
+                locale: {
+                    "format": "DD-MM-YYYY",
+                    "cancelLabel": "Cancelar",
+                    "applyLabel": "Aceptar",
+                    "daysOfWeek": [
+                        "Do",
+                        "Lu",
+                        "Ma",
+                        "Mi",
+                        "Ju",
+                        "Vi",
+                        "Sa"
+                    ],
+                    "monthNames": [
+                        "Enero",
+                        "Febrero",
+                        "Marzo",
+                        "Abril",
+                        "Mayo",
+                        "Junio",
+                        "Julio",
+                        "Agosto",
+                        "Septiembre",
+                        "Octubre",
+                        "Noviembre",
+                        "Diciembre"
+                    ],
+                },
+            })
+        </script>
 
         <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
     @else
