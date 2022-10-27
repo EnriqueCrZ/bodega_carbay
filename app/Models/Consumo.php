@@ -13,7 +13,7 @@ class Consumo extends Model
 
 
     protected $fillable = [
-        'idconsumo','fecha','orden_trabajo','cantidad_devuelto','cantidad_chatarra',
+        'idconsumo','fecha','orden_trabajo','cantidad_devuelto','cantidad_chatarra','equipo_id'
     ];
 
     protected $primaryKey = 'idconsumo';

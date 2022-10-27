@@ -17,7 +17,7 @@ class EquipoController extends Controller
     public function index(){
         $equipos = Equipo::join('tipo_operacion','tipo_operacion.idtipo_operacion','equipo.tipo_operacion_idtipo_operacion')
             ->select('equipo.*','tipo_operacion.operacion as tipo_operacion')
-            ->all();
+            ->get();
 
 
         return view('equipo.equipo',compact('equipos'));

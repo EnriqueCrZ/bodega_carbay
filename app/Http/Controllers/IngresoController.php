@@ -19,7 +19,7 @@ class IngresoController extends Controller
         $ingresos = Ingreso::join('proveedor','proveedor.id_proveedor','ingreso.proveedor_id_proveedor')
                     ->join('repuesto','repuesto.item','ingreso.repuesto_item')
                     ->select('ingreso.*','proveedor.nit as nit_proveedor','proveedor.nombre_proveedor as nombre_proveedor','repuesto.item as item_repuesto','repuesto.nombre as nombre_repuesto')
-                    ->paginate(50);
+                    ->get();
 
 
         return view('ingreso.ingreso',compact('ingresos'));
