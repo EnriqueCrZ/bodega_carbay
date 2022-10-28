@@ -10,3 +10,9 @@
 </select>
 
 <input type="hidden" name="tipoVale" value="sinConsumir">
+
+<script>
+    $(".selector").select2({
+                allowClear: true
+            });
+</script>

@@ -50,7 +50,7 @@
                                <button type="button" class="btn btn-outline-info"><i class="fas fa-edit"></i></button>
                            </a>
                             <a href="{{ route('consumo.consumir',['consumo'=>$consumo]) }}">
-                                <button type="button" class="btn btn-outline-danger" @if(validarConsumo($consumo)) disabled @endif><i class="fas fa-tools"></i></button>
+                                <button type="button" class="btn btn-outline-danger"><i class="fas fa-tools"></i></button>
                             </a>
                            {{-- <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$equipo->id}})"><i class="fas fa-trash"></i></button> --}}
                        </td>

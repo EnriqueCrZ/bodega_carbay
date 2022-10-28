@@ -100,11 +100,24 @@ class ConsumoController extends Controller
                                     ->select('ingreso.*')
                                     ->groupBy('ingreso.vale')
                                     ->get();
+
+        foreach($ingresosValeSinConsumir as $key => $iv){
+            $valeConsumido = Ingreso::join('ingreso_consumido','ingreso_consumido.ingreso_idingreso','ingreso.idingreso')
+                                    ->where('ingreso.vale',$iv->vale)
+                                    ->get();
+
+            if(count($valeConsumido)>0){
+                $ingresosValeSinConsumir->forget($key);
+            }
+        }
         return view('consumo.vale.vale_sin_consumir',compact('ingresosValeSinConsumir'));
     }
 
     public function returnValeConsumido(){
-
+        $ingresos = Ingreso::leftJoin('ingreso_consumido','ingreso_consumido.ingreso_idingreso','ingreso.idingreso')
+                            ->whereNull('ingreso_consumido.ingreso_idingreso')
+                            ->select('ingreso.*')
+                            ->get();
     }
 
     public function guardarConsumo(Request $request,$id){
@@ -120,6 +133,7 @@ class ConsumoController extends Controller
         } else{
 
         }
+        return redirect()->route('consumo')->with('status','Consumido.');
 
     }
 
