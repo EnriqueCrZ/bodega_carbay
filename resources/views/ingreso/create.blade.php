@@ -88,7 +88,7 @@
                     <label for="repuesto">Repuesto</label>
                     <select name="repuesto" class="form-control selector" id="repuesto">
                         @foreach ($repuestos as $r)
-                            <option value="{{ $r->item }}">{{ $r->nombre }}</option>
+                            <option value="{{ $r->id_repuesto }}">{{ $r->nombre }}</option>
                         @endforeach
                     </select>
                 </div>

@@ -60,7 +60,7 @@
                     <label for="repuesto">Repuesto</label>
                     <select name="repuesto" class="form-control selector" id="repuesto">
                         @foreach ($repuestos as $r)
-                            <option value="{{ $r->item }}" @if($r->item == $ingreso->repuesto_item) selected @endif>{{ $r->nombre }}</option>
+                            <option value="{{ $r->id_repuesto }}" @if($r->id_repuesto == $ingreso->repuesto_id) selected @endif>{{ $r->nombre }}</option>
                         @endforeach
                     </select>
                 </div>

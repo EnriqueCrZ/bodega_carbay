@@ -14,7 +14,7 @@ class Ingreso extends Model
 
     protected $fillable = [
         'idingreso','fecha','fecha_vale','vale','costo_unitario','costo_total','cantidad','pagado',
-        'repuesto_item','proveedor_idproveedor'
+        'repuesto_id','proveedor_idproveedor'
     ];
 
     protected $primaryKey = 'idingreso';

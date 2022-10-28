@@ -31,6 +31,14 @@ Route::get('/consumo/edit/{consumo}', [ConsumoController::class, 'edit'])->name(
 Route::post('/consumo/update/{consumo}', [ConsumoController::class, 'update'])->name('consumo.actualizar');
 Route::post('/consumo/delete/', [ConsumoController::class, 'delete'])->name('consumo.eliminar');
 
+Route::get('/consumo/consumir/{consumo}', [ConsumoController::class, 'consumir'])->name('consumo.consumir');
+Route::post('/consumo/guardar/ingreso/{consumo}',[ConsumoController::class, 'guardarConsumo'])->name('consumo.guardarConsumo');
+
+Route::post('/consumo/data/vale_consumido',[ConsumoController::class, 'returnValeSinConsumir'])->name('consumo.consumido.no');
+
+// Detalles
+Route::post('/consumo/data/detalles',[ConsumoController::class, 'detallesConsumo'])->name('consumo.detalles');
+
 // Ingreso
 Route::get('/ingreso', [IngresoController::class, 'index'])->name('ingreso');
 Route::get('/ingreso/create', [IngresoController::class, 'create'])->name('ingreso.crear');

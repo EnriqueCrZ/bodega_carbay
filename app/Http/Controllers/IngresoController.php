@@ -17,7 +17,7 @@ class IngresoController extends Controller
 
     public function index(Request $request){
         $ingresos = Ingreso::join('proveedor','proveedor.id_proveedor','ingreso.proveedor_id_proveedor')
-                    ->join('repuesto','repuesto.item','ingreso.repuesto_item')
+                    ->join('repuesto','repuesto.id_repuesto','ingreso.repuesto_id')
                     ->select('ingreso.*','proveedor.nit as nit_proveedor','proveedor.nombre_proveedor as nombre_proveedor','repuesto.item as item_repuesto','repuesto.nombre as nombre_repuesto')
                     ->get();
 
@@ -58,7 +58,7 @@ class IngresoController extends Controller
         $ingreso->costo_unitario = $request->costo_unitario;
         $ingreso->costo_total = $request->costo_total;
         $ingreso->cantidad = $request->cantidad;
-        $ingreso->repuesto_item = $request->repuesto;
+        $ingreso->repuesto_id = $request->repuesto;
         $ingreso->proveedor_id_proveedor = $request->proveedor;
         $ingreso->save();
 
@@ -83,7 +83,7 @@ class IngresoController extends Controller
         $ingreso->costo_unitario = $request->costo_unitario;
         $ingreso->costo_total = $request->costo_total;
         $ingreso->cantidad = $request->cantidad;
-        $ingreso->repuesto_item = $request->repuesto;
+        $ingreso->repuesto_id = $request->repuesto;
         $ingreso->proveedor_id_proveedor = $request->proveedor;
         $ingreso->save();
 

@@ -31,7 +31,8 @@
                        <th scope="col">Unidad</th>
                        <th scope="col">Cantidad Devuelto</th>
                        <th scope="col">Cantidad Chatarra</th>
-                       <th scope="col">Opcion</th>
+                       <th scope="col">Opciones</th>
+                       <th scope="col">Detalles</th>
                    </tr>
                    </thead>
                @endif
@@ -48,7 +49,21 @@
                            <a href="{{route('consumo.editar',['consumo'=>$consumo] )}}">
                                <button type="button" class="btn btn-outline-info"><i class="fas fa-edit"></i></button>
                            </a>
+                            <a href="{{ route('consumo.consumir',['consumo'=>$consumo]) }}">
+                                <button type="button" class="btn btn-outline-danger" @if(validarConsumo($consumo)) disabled @endif><i class="fas fa-tools"></i></button>
+                            </a>
                            {{-- <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$equipo->id}})"><i class="fas fa-trash"></i></button> --}}
+                       </td>
+                       <td>
+                            @if(validarConsumo($consumo))
+                                <a href="#">
+                                    <button type="button" class="btn btn-outline-primary" onclick="detallesOrden({{ $consumo->idconsumo }})">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                </a>
+                            @else
+                                Sin consumir
+                            @endif
                        </td>
                    </tr>
                @empty
@@ -57,7 +72,7 @@
                </tbody>
            </table>
        </div>
-
+       <div class="modal-response"></div>
 
 @stop
 
@@ -67,33 +82,19 @@
 
 @section('js')
     <script>
-        function confirmDelete(id){
-            console.log(id);
-           /* Swal.fire({
-                title: '¿Quieres eliminar el proveedor?',
-                showDenyButton: true,
-                showCancelButton: false,
-                confirmButtonText: 'Eliminar',
-                denyButtonText: `No eliminar`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '{{route('proveedor.eliminar')}}',
-                        data: {"id":id, "_token":'{{csrf_token()}}'},
-                        success:function(data){
-                            if(data){
-                                Swal.fire('Eliminando...', '', 'success');
-                                location.reload();
-                            }else{
-                                Swal.fire('Ocurrio un problema.', '', 'danger')
-                            }
-                        }
-                    });
-                } else if (result.isDenied) {
-                    Swal.fire('Proveedor no eliminado', '', 'info')
+        function detallesOrden(id){
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('consumo.detalles') }}',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id
+                },
+                success: function(response){
+                    $('.modal-response').html(response);
+                    $('#modalConsumo').modal('show');
                 }
-            })*/
+            })
         }
     </script>
 @stop
