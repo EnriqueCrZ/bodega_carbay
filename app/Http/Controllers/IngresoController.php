@@ -90,6 +90,10 @@ class IngresoController extends Controller
         return redirect()->route('ingreso')->with('status','Ingreso actualizado.');
     }
 
+    public function retornarCantidadRepuesto(Request $request){
+        return Ingreso::where('idingreso',$request->ingreso)->value('cantidad');
+    }
+
     public function destroy(Request $request){
 
     }

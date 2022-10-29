@@ -118,7 +118,11 @@ class ConsumoController extends Controller
                             ->whereNull('ingreso_consumido.ingreso_idingreso')
                             ->select('ingreso.*')
                             ->get();
+
+
+        return view('consumo.vale.vale_consumido',compact('ingresos'));
     }
+
 
     public function guardarConsumo(Request $request,$id){
         if($request->tipoVale == 'sinConsumir'){
@@ -131,7 +135,11 @@ class ConsumoController extends Controller
                 $ingresoConsumido->save();
             }
         } else{
-
+            $ingresoConsumido = new IngresoConsumido();
+            $ingresoConsumido->cantidad = $request->cantidad;
+            $ingresoConsumido->consumo_idconsumo = $id;
+            $ingresoConsumido->ingreso_idingreso = $request->vale;
+            $ingresoConsumido->save();
         }
         return redirect()->route('consumo')->with('status','Consumido.');
 

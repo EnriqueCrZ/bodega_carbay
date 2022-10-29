@@ -88,7 +88,25 @@
         }
 
         function no(){
-            console.log('no');
+            $.ajax({
+                type: 'POST',
+                'url': '{{ route('consumo.consumido.si') }}',
+                data: {foo: null},
+                success: function (response){
+                    $('#vale').html(response);
+                }
+            })
         }
+
+        $('#vale_ingreso').change(function(){
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('consumo.ingreso.cantidad') }}',
+                data: {ingreso: $('#vale option:selected').val()},
+                success: function(response){
+                    $('#cantidad').prop('max',response);
+                }
+            })
+        });
     </script>
 @stop
