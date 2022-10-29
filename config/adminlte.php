@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Terrestres Carbau',
+    'title' => 'Terrestres Carbay',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -311,15 +311,15 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
+        /*[
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
+        ],*/
+        //['header' => 'Sesion'],
+        /*[
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
@@ -327,6 +327,11 @@ return [
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Cerrar Sesion',
+            'url'  => 'logout',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
@@ -366,7 +371,7 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ],*/
         ['header' => 'MENU'],
         [
             'text'=>'Consumo',
@@ -401,7 +406,7 @@ return [
                 ]
             ],
         ],
-        ['header' => 'labels'],
+        /*['header' => 'labels'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
@@ -416,7 +421,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*

@@ -1,17 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Terrestres Carbay')
 
-@section('content_header')
-    <h1>Dashboard</h1>
-@stop
-
-@section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-@stop
 
 @section('css')
-
+<style>
+    .content-wrapper {
+        background-image: url("https://cpn.gob.gt/xii-congreso-maritimo-portuario/images/slide-1.jpg");
+    }
+</style>
 @stop
 
 @section('js')

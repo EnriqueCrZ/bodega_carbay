@@ -3,6 +3,7 @@
 use App\Http\Controllers\ConsumoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\LlantaController;
 use App\Http\Controllers\RepuestoController;
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 // Consumo
 Route::get('/consumo', [ConsumoController::class, 'index'])->name('consumo');
@@ -88,3 +87,11 @@ Route::post('/datos/llanta/store', [LlantaController::class, 'save'])->name('lla
 Route::get('/datos/llanta/edit/{llanta}', [LlantaController::class, 'edit'])->name('llanta.editar');
 Route::post('/datos/llanta/update/{llanta}', [LlantaController::class, 'update'])->name('llanta.actualizar');
 Route::post('/datos/llanta/delete/', [LlantaController::class, 'delete'])->name('llanta.eliminar');
+
+Auth::routes([
+    'register' => false,
+  'reset' => false,
+  'verify' => false,
+]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
