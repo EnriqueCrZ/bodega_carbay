@@ -379,6 +379,11 @@ return [
             'url'=>'/ingreso'
         ],
         [
+            'text'=>'Control de Llantas',
+            'icon'=>'fas fa-fw fa-tire-flat',
+            'url'=>'/datos/llanta'
+        ],
+        [
             'text'    => 'INFORMACION',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [

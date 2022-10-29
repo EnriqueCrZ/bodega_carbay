@@ -4,6 +4,7 @@ use App\Http\Controllers\ConsumoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\IngresoController;
+use App\Http\Controllers\LlantaController;
 use App\Http\Controllers\RepuestoController;
 use Illuminate\Support\Facades\Route;
 
@@ -75,3 +76,12 @@ Route::post('/datos/repuesto/store', [RepuestoController::class, 'save'])->name(
 Route::get('/datos/repuesto/edit/{repuesto}', [RepuestoController::class, 'edit'])->name('repuesto.editar');
 Route::post('/datos/repuesto/update/{repuesto}', [RepuestoController::class, 'update'])->name('repuesto.actualizar');
 Route::post('/datos/repuesto/delete/', [RepuestoController::class, 'delete'])->name('repuesto.eliminar');
+
+// Llantas
+Route::get('/datos/llanta', [LlantaController::class, 'index'])->name('llanta');
+Route::get('/datos/llanta/create', [LlantaController::class, 'create'])->name('llanta.crear');
+Route::post('/datos/llanta/store', [LlantaController::class, 'save'])->name('llanta.almacenar');
+
+Route::get('/datos/llanta/edit/{llanta}', [LlantaController::class, 'edit'])->name('llanta.editar');
+Route::post('/datos/llanta/update/{llanta}', [LlantaController::class, 'update'])->name('llanta.actualizar');
+Route::post('/datos/llanta/delete/', [LlantaController::class, 'delete'])->name('llanta.eliminar');

@@ -13,8 +13,7 @@ class Llanta extends Model
 
     protected $fillable = [
         'no_ot_vale','kilometraje','cantidad','descripcion_quemado','costo_unitario','costo_total','fecha_instalacion',
-        'coordinador','marca','movimiento','operacion','equipo_id','proveedor_idproveedor','coordinador_idcoordinador',
-        'ingreso_idingreso'
+        'marca','movimiento','operacion','vale','equipo_id','proveedor_idproveedor','coordinador_idcoordinador',
     ];
 
     protected $primaryKey = 'no_ot_vale';
