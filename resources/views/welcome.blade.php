@@ -3,14 +3,93 @@
 @section('title', 'Terrestres Carbay')
 
 
-@section('css')
+@section('content_header')
+    <h1>DASHBOARD</h1>
+@stop
+
+@section('content')
+
+<div class="card col-sm-4">
+    <img class="card-img-top" src="#" alt="Card image cap">
+    <div class="card-body">
+        <canvas id="myChart" width="50%" height="50%"></canvas>
+    </div>
+  </div>
+
+@stop
+
+
+{{-- @section('css')
 <style>
     .content-wrapper {
         background-image: url("https://cpn.gob.gt/xii-congreso-maritimo-portuario/images/slide-1.jpg");
     }
 </style>
-@stop
+@stop --}}
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+
+const ctx = document.getElementById('myChart').getContext('2d');
+
+const titleTooltip = (tooltipItems) => {
+    return '';
+}
+
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {!! json_encode($labels) !!},
+        datasets: [{
+            label: 'Operacion',
+            data: {!! json_encode($data) !!},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+           yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    callback: function(value, index, values) {
+                    if(parseInt(value) >= 1000){
+                        return 'Q' + parseInt(value).toLocaleString();
+                    } else {
+                        return 'Q' + value;
+                    }
+                    }
+                }
+            }],
+
+        },
+        tooltips: {
+            callbacks: {
+                label: function(context){
+                    return 'Q' + parseInt(context.value).toLocaleString();
+                }
+            }
+        }
+    }
+});
+
+    </script>
 @stop
