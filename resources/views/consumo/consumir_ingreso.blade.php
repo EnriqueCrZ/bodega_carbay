@@ -105,6 +105,7 @@
                 data: {ingreso: $('#vale option:selected').val()},
                 success: function(response){
                     $('#cantidad').prop('max',response);
+                    $('#cantidad').val(response);
                 }
             })
         });

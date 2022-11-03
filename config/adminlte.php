@@ -406,6 +406,11 @@ return [
                 ]
             ],
         ],
+        [
+            'text' => 'REPORTE',
+            'icon' => 'fas fa-fw fa-file',
+            'url' => '/reporte'
+        ]
         /*['header' => 'labels'],
         [
             'text'       => 'important',

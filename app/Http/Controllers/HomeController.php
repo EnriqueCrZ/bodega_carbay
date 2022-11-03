@@ -29,7 +29,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Carbon::setLocale('es');
+        $now = Carbon::now();
+        $from = Carbon::create($now->isoFormat('YYYY'),$now->subMonth()->isoFormat('M'),20);
+        $to = Carbon::create($now->isoFormat('YYYY'),$now->addMonth()->isoFormat('M'),20);
+
+
         //DB::enableQueryLog();
         $porOperacion = IngresoConsumido::join('ingreso','ingreso.idingreso','ingreso_consumido.ingreso_idingreso')
                                         ->join('consumo','consumo.idconsumo','ingreso_consumido.consumo_idconsumo')
@@ -37,6 +41,7 @@ class HomeController extends Controller
                                         ->join('tipo_operacion','tipo_operacion.idtipo_operacion','equipo.tipo_operacion_idtipo_operacion')
                                         ->groupBy('tipo_operacion.operacion')
                                         ->select('ingreso_consumido.*','ingreso.costo_unitario','tipo_operacion.operacion',DB::raw('sum(ingreso_consumido.cantidad * costo_unitario) as total'), 'consumo.fecha as fecha_consumo')
+                                        ->whereBetween('consumo.fecha',[$from,$to])
                                         ->get();
 
         $porEquipo = IngresoConsumido::join('ingreso','ingreso.idingreso','ingreso_consumido.ingreso_idingreso')
@@ -44,10 +49,13 @@ class HomeController extends Controller
                                     ->join('equipo','equipo.id','consumo.equipo_id')
                                     ->join('tipo_operacion','tipo_operacion.idtipo_operacion','equipo.tipo_operacion_idtipo_operacion')
                                     ->groupBy('equipo.equipo')
-                                    ->select('ingreso_consumido.*','ingreso.costo_unitario','tipo_operacion.operacion',DB::raw('sum(ingreso_consumido.cantidad * costo_unitario) as total'),'consumo.fecha as fecha_consumo')
+                                    ->select('equipo.*','ingreso.costo_unitario','tipo_operacion.operacion',DB::raw('sum(ingreso_consumido.cantidad * costo_unitario) as total'),'consumo.fecha as fecha_consumo')
+                                    ->whereBetween('consumo.fecha',[$from,$to])
+                                    ->orderBy('total','desc')
                                     ->get();
 
 
+ //Repuesto más pedido
 
 
         foreach($porOperacion as $po){
@@ -56,13 +64,9 @@ class HomeController extends Controller
             $porOperacionData[] = $po->total;
         }
 
-        foreach($porEquipo as $pe){
-            $porEquipoLabels[] = $pe->equipo;
-            $porEquipoData[] = $pe->total;
-        }
 
         //dd($porOperacionLabels,$porOperacionData,$porOperacionFecha);
 
-        return view('welcome',compact('porOperacionLabels','porOperacionData','porOperacionFecha','porEquipoLabels','porEquipoData'));
+        return view('welcome',compact('porOperacionLabels','porOperacionData','porOperacionFecha','porEquipo'));
     }
 }
